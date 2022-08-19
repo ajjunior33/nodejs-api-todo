@@ -9,8 +9,8 @@ const cors = require("cors")
 const app = express();
 
 mongoose.connect(process.env.MONGO_DB_CONNECTION, {
-  useUnifedTopology: true,
-  useNewUrlParse: true
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
 });
 
 

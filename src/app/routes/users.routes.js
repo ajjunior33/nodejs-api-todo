@@ -1,27 +1,32 @@
 const {
   Router
 } = require("express");
+
 const {
   celebrate,
   Segments,
   Joi
 } = require('celebrate');
 
-const AuthController = require("../controllers/AuthController");
+const UserController = require("../controllers/UserController");
 
-const AuthRoutes = Router();
+const UsersRoutes = Router();
 
-AuthRoutes.post("/", celebrate({
+UsersRoutes
+  .post("/", celebrate({
       [Segments.BODY]: Joi.object().keys({
         email: Joi.string().required().messages({
           "any.required": "O campo {#label} é obrigatório.",
+        }),
+        name: Joi.string().required().messages({
+          "any.required": "O campo {$label} é obrigatório."
         }),
         password: Joi.string().required().messages({
           "any.required": "O campo {$label} é obrigatório."
         }),
       }),
     }),
-    AuthController.auth
-  ),
+    UserController.store
+  );
 
-  module.exports = AuthRoutes;
+module.exports = UsersRoutes;
