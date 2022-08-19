@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const routes = require("./routes/routes");
 const mongoose = require("mongoose")
 const cors = require("cors")
-
+const { joi } = require("celebrate")
 
 const app = express();
 
@@ -39,6 +39,7 @@ app.use((error, request, response, next ) => {
       });
   }
 
+  console.log(error);
   return response.status(500).send(error);
 })
 
