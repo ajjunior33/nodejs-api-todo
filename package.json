@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon ./src/server.js",
-    "start": "node ./src/server.js"
+    "start": "pm2 restart ecosystem.config.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
